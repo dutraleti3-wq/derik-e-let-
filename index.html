@@ -1,172 +1,224 @@
+HTML
+Copiar código
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Derik & Letícia</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body{
+*{
     margin:0;
-    font-family:'Inter', sans-serif;
-    background:#f8f8f8;
-    color:#333;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
-.lock-screen{
-    height:100vh;
+body{
+    background:#ffffff;
+    color:#222;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
-    text-align:center;
+    min-height:100vh;
     padding:20px;
 }
 
-input{
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    margin-top:15px;
-    width:200px;
-}
-
-button{
-    padding:10px 20px;
-    margin-top:10px;
-    border:none;
-    background:#000;
-    color:#fff;
-    border-radius:20px;
-    cursor:pointer;
+.container{
+    max-width:800px;
+    width:100%;
 }
 
 .hidden{
     display:none;
 }
 
-.container{
-    max-width:800px;
-    margin:auto;
-    padding:40px 20px;
-}
-
-h1{
-    font-family:'Playfair Display', serif;
-    font-size:32px;
+/* LOGIN */
+.login{
     text-align:center;
-    margin-bottom:10px;
 }
 
-.counter{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:14px;
-    color:#777;
+.login h1{
+    font-weight:300;
+    margin-bottom:20px;
 }
 
+input{
+    padding:12px;
+    width:100%;
+    max-width:300px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    background:#000;
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    opacity:0.8;
+}
+
+/* TIMELINE */
 .timeline{
-    border-left:1px solid #ddd;
-    padding-left:20px;
+    margin-top:40px;
 }
 
 .event{
+    border-left:2px solid #000;
+    padding-left:20px;
     margin-bottom:30px;
+    position:relative;
 }
 
-.event h3{
-    margin:0;
-    font-size:16px;
+.event::before{
+    content:"";
+    width:10px;
+    height:10px;
+    background:#000;
+    border-radius:50%;
+    position:absolute;
+    left:-6px;
+    top:5px;
 }
 
-.event span{
+.date{
+    font-size:14px;
+    opacity:0.6;
+}
+
+h2{
+    font-weight:400;
+    margin-bottom:5px;
+}
+
+.counter{
+    margin-top:40px;
+    padding:20px;
+    border:1px solid #eee;
+    border-radius:12px;
+    text-align:center;
+}
+
+.counter h3{
+    font-weight:400;
+    margin-bottom:10px;
+}
+
+.music{
+    margin-top:30px;
+    text-align:center;
     font-size:12px;
-    color:#888;
-}
-
-audio{
-    display:none;
+    opacity:0.5;
 }
 
 @media(max-width:600px){
-    h1{font-size:24px;}
+    body{
+        padding:15px;
+    }
 }
 </style>
 </head>
+
 <body>
 
-<div class="lock-screen" id="lock">
-    <h1>Derik & Letícia 🤍</h1>
-    <p>Digite nossa senha</p>
-    <input type="password" id="password" placeholder="Senha">
-    <button onclick="checkPassword()">Entrar</button>
+<div class="container">
+
+<div class="login" id="login">
+    <h1>Derik & Letícia</h1>
+    <p>Digite a senha para acessar</p>
+    <input type="password" id="senha" placeholder="Senha">
+    <br>
+    <button onclick="verificarSenha()">Entrar</button>
 </div>
 
-<div class="hidden" id="content">
+<div class="conteudo hidden" id="conteudo">
 
-<div class="container">
-    <h1>Derik & Letícia</h1>
-    <div class="counter" id="counter"></div>
+    <h1 style="font-weight:300;">Nossa Linha do Tempo 🤍</h1>
 
     <div class="timeline">
+
         <div class="event">
-            <h3>Primeira conversa</h3>
-            <span>10/11/2024</span>
+            <h2>Primeira conversa</h2>
+            <div class="date">10/11/2024</div>
         </div>
 
         <div class="event">
-            <h3>Pedido de namoro com buquê 💐</h3>
-            <span>28/04/2025</span>
+            <h2>Pedido de namoro com buquê</h2>
+            <div class="date">28/04/2025</div>
         </div>
 
         <div class="event">
-            <h3>Pedido com meus pais 🤍</h3>
-            <span>15/05/2025</span>
+            <h2>Pedido com meus pais</h2>
+            <div class="date">15/05/2025</div>
         </div>
 
         <div class="event">
-            <h3>Pedido com alianças 💍</h3>
-            <span>12/06/2025</span>
+            <h2>Pedido com alianças</h2>
+            <div class="date">12/06/2025</div>
         </div>
+
+        <div class="event">
+            <h2>Aniversário do Derik 🎂</h2>
+            <div class="date">05/08</div>
+        </div>
+
     </div>
+
+    <div class="counter">
+        <h3>Estamos juntos há:</h3>
+        <p id="contador"></p>
+    </div>
+
+    <div class="music">
+        Tocando nossa música 🎵
+    </div>
+
 </div>
 
 <audio autoplay loop>
-    <source src="COLOQUE_AQUI_LINK_DA_MUSICA.mp3" type="audio/mpeg">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
 </audio>
 
 </div>
 
 <script>
-function checkPassword(){
-    const senha = "1011"; // você pode trocar
-    const input = document.getElementById("password").value;
-    if(input === senha){
-        document.getElementById("lock").style.display="none";
-        document.getElementById("content").classList.remove("hidden");
-    } else {
+function verificarSenha(){
+    const senha = document.getElementById("senha").value;
+    if(senha === "derikeleti"){
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("conteudo").classList.remove("hidden");
+    }else{
         alert("Senha incorreta 🤍");
     }
 }
 
-// contador automático
-const startDate = new Date("2024-11-10");
+function atualizarContador(){
+    const inicio = new Date("2025-04-28");
+    const agora = new Date();
 
-function updateCounter(){
-    const now = new Date();
-    const diff = now - startDate;
+    const diff = agora - inicio;
 
-    const days = Math.floor(diff / (1000*60*60*24));
-    const months = Math.floor(days/30);
-    const years = Math.floor(days/365);
+    const dias = Math.floor(diff / (1000*60*60*24));
+    const meses = Math.floor(dias / 30);
+    const anos = Math.floor(meses / 12);
 
-    document.getElementById("counter").innerHTML =
-        `Juntos há ${days} dias • ${months} meses • ${years} anos`;
+    document.getElementById("contador").innerHTML =
+    anos + " anos, " + (meses % 12) + " meses e " + (dias % 30) + " dias";
 }
 
-updateCounter();
+setInterval(atualizarContador,1000);
+atualizarContador();
 </script>
 
 </body>
