@@ -11,7 +11,8 @@ body{
     font-family:'Georgia', serif;
     background:#111;
     color:#eee;
-    overflow:hidden;
+    overflow-x:hidden;
+    text-align:center;
 }
 
 /* LOGIN */
@@ -42,18 +43,12 @@ button{
 /* LIVRO */
 .book{
     display:none;
-    position:relative;
-    width:100%;
-    height:100vh;
-    perspective:1500px;
-    padding:40px;
-    box-sizing:border-box;
-    overflow:auto;
+    padding:40px 20px;
+    animation:fade 1s;
 }
 
 .page{
     display:none;
-    animation:fade 1s;
 }
 
 .page.active{
@@ -63,6 +58,14 @@ button{
 @keyframes fade{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
+}
+
+/* FOTO CAPA */
+.capa-img{
+    width:260px;
+    border-radius:15px;
+    margin:20px auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
 /* POLAROID */
@@ -93,20 +96,15 @@ button{
 
 /* CONTROLES */
 .controls{
-    text-align:center;
     margin-top:30px;
 }
 
-/* PLAYER */
+/* PLAYER ESCONDIDO */
 .player{
     position:fixed;
-    bottom:10px;
-    right:10px;
-    width:250px;
-    height:140px;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 10px 20px rgba(0,0,0,0.4);
+    width:1px;
+    height:1px;
+    opacity:0;
 }
 
 /* CORAÇÕES */
@@ -123,8 +121,7 @@ button{
 }
 
 @media(max-width:600px){
-    .polaroid{width:85%;}
-    .player{width:180px;height:100px;}
+    .polaroid,.capa-img{width:85%;}
 }
 </style>
 </head>
@@ -141,6 +138,9 @@ button{
 
 <div class="page active">
 <h2>Capítulo 1 – O Começo ✨</h2>
+
+<img src="capa.jpg" class="capa-img">
+
 <p>Primeira conversa – 10/11/2024</p>
 <p>Ali eu não sabia… mas já era você.</p>
 </div>
@@ -191,10 +191,10 @@ Letícia 🤍
 
 </div>
 
-<!-- PLAYER YOUTUBE -->
-<div class="player" id="player" style="display:none;">
+<!-- PLAYER AUTOMÁTICO -->
+<div class="player" id="player">
 <iframe width="100%" height="100%" 
-src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=VIDEO_ID" 
+src="https://www.youtube.com/embed/FG_GBOMGjtw?autoplay=1&loop=1&playlist=FG_GBOMGjtw" 
 frameborder="0" allow="autoplay"></iframe>
 </div>
 
