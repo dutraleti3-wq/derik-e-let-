@@ -1,244 +1,204 @@
-HTML
-Copiar código
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Derik & Letícia</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Derik & Letícia 🤍</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
 body{
-    background:#ffffff;
-    color:#222;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    padding:20px;
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background:#f9f9f9;
+    color:#333;
+    text-align:center;
+    overflow-x:hidden;
 }
 
-.container{
-    max-width:850px;
-    width:100%;
-    animation:fadeIn 1.5s ease-in-out;
+/* ANIMAÇÃO SUAVE */
+.conteudo{
+    opacity:0;
+    transform: translateY(20px);
+    transition:1s;
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-.hidden{
-    display:none;
+.mostrar{
+    opacity:1;
+    transform: translateY(0);
 }
 
 /* LOGIN */
 .login{
-    text-align:center;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
 input{
-    padding:12px;
-    width:100%;
-    max-width:300px;
-    border:1px solid #ddd;
+    padding:10px;
     border-radius:8px;
-    margin:15px 0;
+    border:1px solid #ccc;
+    margin-top:10px;
 }
 
 button{
-    padding:12px 25px;
+    padding:10px 20px;
     border:none;
-    background:#000;
-    color:#fff;
     border-radius:8px;
+    background:#111;
+    color:white;
+    margin-top:10px;
     cursor:pointer;
-    transition:0.3s;
 }
 
 button:hover{
     opacity:0.8;
 }
 
-/* TIMELINE */
-.timeline{
-    margin-top:40px;
+/* GALERIA POLAROID */
+.galeria{
+    margin-top:60px;
 }
 
-.event{
-    border-left:2px solid #000;
-    padding-left:20px;
-    margin-bottom:30px;
-    position:relative;
+.polaroid{
+    background:white;
+    padding:15px 15px 40px 15px;
+    margin:30px auto;
+    width:260px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transform:rotate(-2deg);
+    transition:0.4s;
 }
 
-.event::before{
-    content:"";
-    width:10px;
-    height:10px;
-    background:#000;
-    border-radius:50%;
-    position:absolute;
-    left:-6px;
-    top:5px;
+.polaroid:nth-child(3){
+    transform:rotate(2deg);
 }
 
-.date{
-    font-size:14px;
-    opacity:0.6;
+.polaroid:hover{
+    transform:scale(1.05) rotate(0deg);
 }
 
-/* FOTOS */
-.gallery{
-    margin-top:50px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
-}
-
-.gallery img{
+.polaroid img{
     width:100%;
-    border-radius:12px;
-    object-fit:cover;
+    border-radius:8px;
 }
 
-/* CARTA */
-.letter{
-    margin-top:40px;
-    padding:20px;
-    border:1px solid #eee;
-    border-radius:12px;
-    display:none;
-    line-height:1.6;
-    animation:fadeIn 1s ease-in-out;
+.polaroid p{
+    margin-top:10px;
+    font-size:14px;
 }
 
-.final{
-    margin-top:50px;
-    text-align:center;
-    font-size:18px;
+/* FRASE FINAL */
+.frase{
+    margin:80px 20px;
     font-weight:300;
+    font-size:18px;
 }
 
-.counter{
-    margin-top:30px;
-    text-align:center;
+/* CORAÇÕES */
+.coracao{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:subir 8s linear infinite;
+    opacity:0.4;
 }
 
+@keyframes subir{
+    0%{transform:translateY(0); opacity:0.4;}
+    100%{transform:translateY(-100vh); opacity:0;}
+}
+
+/* RESPONSIVO */
 @media(max-width:600px){
-    body{padding:15px;}
+    .polaroid{
+        width:85%;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
+<!-- LOGIN -->
 <div class="login" id="login">
     <h1>Derik & Letícia 🤍</h1>
     <p>Digite a senha para acessar</p>
     <input type="password" id="senha" placeholder="Senha">
-    <br>
     <button onclick="verificarSenha()">Entrar</button>
 </div>
 
-<div class="conteudo hidden" id="conteudo">
+<!-- CONTEÚDO -->
+<div class="conteudo" id="conteudo" style="display:none;">
 
-    <h1 style="font-weight:300;">Nossa Linha do Tempo</h1>
+    <h1>Derik & Letícia 🤍</h1>
 
-    <div class="timeline">
-        <div class="event">
-            <h2>Primeira conversa</h2>
-            <div class="date">10/11/2024</div>
-        </div>
-
-        <div class="event">
-            <h2>Pedido de namoro com buquê</h2>
-            <div class="date">28/04/2025</div>
-        </div>
-
-        <div class="event">
-            <h2>Pedido com meus pais</h2>
-            <div class="date">15/05/2025</div>
-        </div>
-
-        <div class="event">
-            <h2>Pedido com alianças</h2>
-            <div class="date">12/06/2025</div>
-        </div>
-
-    <div class="counter">
-        <p id="contador"></p>
-    </div>
+    <p>
+        Primeira conversa – 10/11/2024<br>
+        Pedido com buquê – 28/04/2025<br>
+        Pedido com meus pais – 15/05/2025<br>
+        Pedido com alianças – 12/06/2025
+    </p>
 
     <!-- GALERIA -->
-    <div class="gallery">
-        <img src="https://via.placeholder.com/400x400" alt="Foto 1">
-        <img src="https://via.placeholder.com/400x400" alt="Foto 2">
-        <img src="https://via.placeholder.com/400x400" alt="Foto 3">
-    </div>
+    <section class="galeria">
 
-    <!-- BOTÃO CARTA -->
-    <div style="text-align:center; margin-top:40px;">
-        <button onclick="mostrarCarta()">Abrir cartinha 💌</button>
-    </div>
+        <div class="polaroid">
+            <img src="foto1.jpg">
+            <p>Nosso começo ✨</p>
+        </div>
 
-    <div class="letter" id="carta">
-        Meu amor, <br><br>
-        Desde o dia 10/11/2024 minha vida mudou completamente.
-        Cada conversa, cada momento, cada detalhe com você
-        construiu a história mais bonita que eu poderia viver.
-        <br><br>
-        Obrigada por ser meu amor, meu parceiro e meu melhor amigo.
-        Que essa seja só a primeira parte da nossa história. 🤍
-    </div>
+        <div class="polaroid">
+            <img src="foto2.jpg">
+            <p>Momentos que guardo no coração 🤍</p>
+        </div>
 
-    <div class="final">
-        E se eu pudesse escolher mil vezes… <br>
-        ainda escolheria você. ✨
-    </div>
+        <div class="polaroid">
+            <img src="foto3.jpg">
+            <p>Você é meu lar 💌</p>
+        </div>
 
-</div>
+    </section>
+
+    <div class="frase">
+        Desde o nosso primeiro "oi", eu já sentia que você seria diferente.  
+        E hoje eu tenho certeza: você é o amor da minha vida. 🤍
+    </div>
 
 </div>
 
 <script>
 function verificarSenha(){
-    const senhaDigitada = document.getElementById("senha").value;
-    if(senhaDigitada === "0508"){
-        document.getElementById("login").classList.add("hidden");
-        document.getElementById("conteudo").classList.remove("hidden");
+    var senha = document.getElementById("senha").value;
+    if(senha === "0508"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("conteudo").style.display="block";
+        setTimeout(()=>{
+            document.getElementById("conteudo").classList.add("mostrar");
+        },100);
     }else{
         alert("Senha incorreta 🤍");
     }
 }
 
-function atualizarContador(){
-    const inicio = new Date("2024-11-10");
-    const agora = new Date();
-    const diff = agora - inicio;
-    const dias = Math.floor(diff / (1000*60*60*24));
-    document.getElementById("contador").innerHTML =
-    "Estamos juntos há " + dias + " dias 🤍";
+/* CORAÇÕES */
+function criarCoracao(){
+    const coracao=document.createElement("div");
+    coracao.classList.add("coracao");
+    coracao.innerHTML="🤍";
+    coracao.style.left=Math.random()*100+"vw";
+    coracao.style.fontSize=(Math.random()*20+15)+"px";
+    document.body.appendChild(coracao);
+
+    setTimeout(()=>{
+        coracao.remove();
+    },8000);
 }
 
-function mostrarCarta(){
-    document.getElementById("carta").style.display = "block";
-}
-
-setInterval(atualizarContador,1000);
-atualizarContador();
+setInterval(criarCoracao,1000);
 </script>
 
 </body>
