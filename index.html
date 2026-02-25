@@ -28,8 +28,14 @@ body{
 }
 
 .container{
-    max-width:800px;
+    max-width:850px;
     width:100%;
+    animation:fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
 .hidden{
@@ -41,18 +47,13 @@ body{
     text-align:center;
 }
 
-.login h1{
-    font-weight:300;
-    margin-bottom:20px;
-}
-
 input{
     padding:12px;
     width:100%;
     max-width:300px;
     border:1px solid #ddd;
     border-radius:8px;
-    margin-bottom:15px;
+    margin:15px 0;
 }
 
 button{
@@ -97,35 +98,45 @@ button:hover{
     opacity:0.6;
 }
 
-h2{
-    font-weight:400;
-    margin-bottom:5px;
+/* FOTOS */
+.gallery{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
 }
 
-.counter{
+.gallery img{
+    width:100%;
+    border-radius:12px;
+    object-fit:cover;
+}
+
+/* CARTA */
+.letter{
     margin-top:40px;
     padding:20px;
     border:1px solid #eee;
     border-radius:12px;
+    display:none;
+    line-height:1.6;
+    animation:fadeIn 1s ease-in-out;
+}
+
+.final{
+    margin-top:50px;
     text-align:center;
+    font-size:18px;
+    font-weight:300;
 }
 
-.counter h3{
-    font-weight:400;
-    margin-bottom:10px;
-}
-
-.music{
+.counter{
     margin-top:30px;
     text-align:center;
-    font-size:12px;
-    opacity:0.5;
 }
 
 @media(max-width:600px){
-    body{
-        padding:15px;
-    }
+    body{padding:15px;}
 }
 </style>
 </head>
@@ -135,7 +146,7 @@ h2{
 <div class="container">
 
 <div class="login" id="login">
-    <h1>Derik & Letícia</h1>
+    <h1>Derik & Letícia 🤍</h1>
     <p>Digite a senha para acessar</p>
     <input type="password" id="senha" placeholder="Senha">
     <br>
@@ -144,10 +155,9 @@ h2{
 
 <div class="conteudo hidden" id="conteudo">
 
-    <h1 style="font-weight:300;">Nossa Linha do Tempo 🤍</h1>
+    <h1 style="font-weight:300;">Nossa Linha do Tempo</h1>
 
     <div class="timeline">
-
         <div class="event">
             <h2>Primeira conversa</h2>
             <div class="date">10/11/2024</div>
@@ -168,27 +178,38 @@ h2{
             <div class="date">12/06/2025</div>
         </div>
 
-        <div class="event">
-            <h2>Aniversário do Derik 🎂</h2>
-            <div class="date">05/08</div>
-        </div>
-
-    </div>
-
     <div class="counter">
-        <h3>Estamos juntos há:</h3>
         <p id="contador"></p>
     </div>
 
-    <div class="music">
-        Tocando nossa música 🎵
+    <!-- GALERIA -->
+    <div class="gallery">
+        <img src="https://via.placeholder.com/400x400" alt="Foto 1">
+        <img src="https://via.placeholder.com/400x400" alt="Foto 2">
+        <img src="https://via.placeholder.com/400x400" alt="Foto 3">
+    </div>
+
+    <!-- BOTÃO CARTA -->
+    <div style="text-align:center; margin-top:40px;">
+        <button onclick="mostrarCarta()">Abrir cartinha 💌</button>
+    </div>
+
+    <div class="letter" id="carta">
+        Meu amor, <br><br>
+        Desde o dia 10/11/2024 minha vida mudou completamente.
+        Cada conversa, cada momento, cada detalhe com você
+        construiu a história mais bonita que eu poderia viver.
+        <br><br>
+        Obrigada por ser meu amor, meu parceiro e meu melhor amigo.
+        Que essa seja só a primeira parte da nossa história. 🤍
+    </div>
+
+    <div class="final">
+        E se eu pudesse escolher mil vezes… <br>
+        ainda escolheria você. ✨
     </div>
 
 </div>
-
-<audio autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-</audio>
 
 </div>
 
@@ -206,15 +227,14 @@ function verificarSenha(){
 function atualizarContador(){
     const inicio = new Date("2024-11-10");
     const agora = new Date();
-
     const diff = agora - inicio;
-
     const dias = Math.floor(diff / (1000*60*60*24));
-    const meses = Math.floor(dias / 30);
-    const anos = Math.floor(dias / 365);
-
     document.getElementById("contador").innerHTML =
-    anos + " anos • " + meses + " meses • " + dias + " dias";
+    "Estamos juntos há " + dias + " dias 🤍";
+}
+
+function mostrarCarta(){
+    document.getElementById("carta").style.display = "block";
 }
 
 setInterval(atualizarContador,1000);
