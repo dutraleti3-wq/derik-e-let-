@@ -194,8 +194,8 @@ h2{
 
 <script>
 function verificarSenha(){
-    const senha = document.getElementById("senha").value;
-    if(senha === "derikeleti"){
+    const senhaDigitada = document.getElementById("senha").value;
+    if(senhaDigitada === "0508"){
         document.getElementById("login").classList.add("hidden");
         document.getElementById("conteudo").classList.remove("hidden");
     }else{
@@ -204,17 +204,17 @@ function verificarSenha(){
 }
 
 function atualizarContador(){
-    const inicio = new Date("2025-04-28");
+    const inicio = new Date("2024-11-10");
     const agora = new Date();
 
     const diff = agora - inicio;
 
     const dias = Math.floor(diff / (1000*60*60*24));
     const meses = Math.floor(dias / 30);
-    const anos = Math.floor(meses / 12);
+    const anos = Math.floor(dias / 365);
 
     document.getElementById("contador").innerHTML =
-    anos + " anos, " + (meses % 12) + " meses e " + (dias % 30) + " dias";
+    anos + " anos • " + meses + " meses • " + dias + " dias";
 }
 
 setInterval(atualizarContador,1000);
