@@ -8,23 +8,10 @@
 <style>
 body{
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background:#f9f9f9;
-    color:#333;
-    text-align:center;
-    overflow-x:hidden;
-}
-
-/* ANIMAÇÃO SUAVE */
-.conteudo{
-    opacity:0;
-    transform: translateY(20px);
-    transition:1s;
-}
-
-.mostrar{
-    opacity:1;
-    transform: translateY(0);
+    font-family:'Georgia', serif;
+    background:#111;
+    color:#eee;
+    overflow:hidden;
 }
 
 /* LOGIN */
@@ -39,46 +26,54 @@ body{
 input{
     padding:10px;
     border-radius:8px;
-    border:1px solid #ccc;
-    margin-top:10px;
+    border:none;
 }
 
 button{
     padding:10px 20px;
+    margin-top:10px;
     border:none;
     border-radius:8px;
-    background:#111;
-    color:white;
-    margin-top:10px;
+    background:#fff;
+    color:#111;
     cursor:pointer;
 }
 
-button:hover{
-    opacity:0.8;
+/* LIVRO */
+.book{
+    display:none;
+    position:relative;
+    width:100%;
+    height:100vh;
+    perspective:1500px;
+    padding:40px;
+    box-sizing:border-box;
+    overflow:auto;
 }
 
-/* GALERIA POLAROID */
-.galeria{
-    margin-top:60px;
+.page{
+    display:none;
+    animation:fade 1s;
 }
 
+.page.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* POLAROID */
 .polaroid{
-    background:white;
+    background:#fff;
+    color:#000;
     padding:15px 15px 40px 15px;
     margin:30px auto;
     width:260px;
     border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-    transform:rotate(-2deg);
-    transition:0.4s;
-}
-
-.polaroid:nth-child(3){
-    transform:rotate(2deg);
-}
-
-.polaroid:hover{
-    transform:scale(1.05) rotate(0deg);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 .polaroid img{
@@ -86,119 +81,164 @@ button:hover{
     border-radius:8px;
 }
 
-.polaroid p{
-    margin-top:10px;
-    font-size:14px;
+/* CARTA */
+.carta{
+    display:none;
+    margin-top:20px;
+    background:#fff;
+    color:#000;
+    padding:20px;
+    border-radius:12px;
 }
 
-/* FRASE FINAL */
-.frase{
-    margin:80px 20px;
-    font-weight:300;
-    font-size:18px;
+/* CONTROLES */
+.controls{
+    text-align:center;
+    margin-top:30px;
+}
+
+/* PLAYER */
+.player{
+    position:fixed;
+    bottom:10px;
+    right:10px;
+    width:250px;
+    height:140px;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 10px 20px rgba(0,0,0,0.4);
 }
 
 /* CORAÇÕES */
-.coracao{
+.heart{
     position:fixed;
     bottom:-20px;
-    font-size:20px;
-    animation:subir 8s linear infinite;
-    opacity:0.4;
+    animation:rise 8s linear infinite;
+    opacity:0.3;
 }
 
-@keyframes subir{
-    0%{transform:translateY(0); opacity:0.4;}
-    100%{transform:translateY(-100vh); opacity:0;}
+@keyframes rise{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-100vh);}
 }
 
-/* RESPONSIVO */
 @media(max-width:600px){
-    .polaroid{
-        width:85%;
-    }
+    .polaroid{width:85%;}
+    .player{width:180px;height:100px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
 <div class="login" id="login">
     <h1>Derik & Letícia 🤍</h1>
-    <p>Digite a senha para acessar</p>
     <input type="password" id="senha" placeholder="Senha">
-    <button onclick="verificarSenha()">Entrar</button>
+    <button onclick="entrar()">Entrar</button>
 </div>
 
-<!-- CONTEÚDO -->
-<div class="conteudo" id="conteudo" style="display:none;">
+<div class="book" id="book">
 
-    <h1>Derik & Letícia 🤍</h1>
+<div class="page active">
+<h2>Capítulo 1 – O Começo ✨</h2>
+<p>Primeira conversa – 10/11/2024</p>
+<p>Ali eu não sabia… mas já era você.</p>
+</div>
 
-    <p>
-        Primeira conversa – 10/11/2024<br>
-        Pedido com buquê – 28/04/2025<br>
-        Pedido com meus pais – 15/05/2025<br>
-        Pedido com alianças – 12/06/2025
-    </p>
+<div class="page">
+<h2>Capítulo 2 – Os Pedidos 🤍</h2>
+<p>Buquê – 28/04/2025</p>
+<p>Com meus pais – 15/05/2025</p>
+<p>Alianças – 12/06/2025</p>
+</div>
 
-    <!-- GALERIA -->
-    <section class="galeria">
+<div class="page">
+<h2>Capítulo 3 – Nós 📸</h2>
 
-        <div class="polaroid">
-            <img src="foto1.jpg">
-            <p>Nosso começo ✨</p>
-        </div>
+<div class="polaroid">
+<img src="foto1.jpg">
+<p>Nosso começo</p>
+</div>
 
-        <div class="polaroid">
-            <img src="foto2.jpg">
-            <p>Momentos que guardo no coração 🤍</p>
-        </div>
+<div class="polaroid">
+<img src="foto2.jpg">
+<p>Você é meu lar</p>
+</div>
 
-        <div class="polaroid">
-            <img src="foto3.jpg">
-            <p>Você é meu lar 💌</p>
-        </div>
+</div>
 
-    </section>
+<div class="page">
+<h2>Capítulo 4 – Carta 💌</h2>
+<button onclick="mostrarCarta()">Abrir carta</button>
 
-    <div class="frase">
-        Desde o nosso primeiro "oi", eu já sentia que você seria diferente.  
-        E hoje eu tenho certeza: você é o amor da minha vida. 🤍
-    </div>
+<div class="carta" id="carta">
+Desde que você entrou na minha vida,
+eu entendi o que é amar de verdade.
 
+Você é minha escolha diária,
+meu melhor amigo,
+meu amor.
+
+Com amor,
+Letícia 🤍
+</div>
+</div>
+
+<div class="controls">
+<button onclick="anterior()">⬅</button>
+<button onclick="proxima()">➡</button>
+</div>
+
+</div>
+
+<!-- PLAYER YOUTUBE -->
+<div class="player" id="player" style="display:none;">
+<iframe width="100%" height="100%" 
+src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&loop=1&playlist=VIDEO_ID" 
+frameborder="0" allow="autoplay"></iframe>
 </div>
 
 <script>
-function verificarSenha(){
-    var senha = document.getElementById("senha").value;
-    if(senha === "0508"){
-        document.getElementById("login").style.display="none";
-        document.getElementById("conteudo").style.display="block";
-        setTimeout(()=>{
-            document.getElementById("conteudo").classList.add("mostrar");
-        },100);
-    }else{
-        alert("Senha incorreta 🤍");
-    }
+let pagina=0;
+const paginas=document.querySelectorAll(".page");
+
+function entrar(){
+if(document.getElementById("senha").value==="0508"){
+document.getElementById("login").style.display="none";
+document.getElementById("book").style.display="block";
+document.getElementById("player").style.display="block";
+}else{
+alert("Senha incorreta 🤍");
+}
 }
 
-/* CORAÇÕES */
-function criarCoracao(){
-    const coracao=document.createElement("div");
-    coracao.classList.add("coracao");
-    coracao.innerHTML="🤍";
-    coracao.style.left=Math.random()*100+"vw";
-    coracao.style.fontSize=(Math.random()*20+15)+"px";
-    document.body.appendChild(coracao);
-
-    setTimeout(()=>{
-        coracao.remove();
-    },8000);
+function mostrarPagina(){
+paginas.forEach(p=>p.classList.remove("active"));
+paginas[pagina].classList.add("active");
 }
 
-setInterval(criarCoracao,1000);
+function proxima(){
+if(pagina<paginas.length-1){pagina++;mostrarPagina();}
+}
+
+function anterior(){
+if(pagina>0){pagina--;mostrarPagina();}
+}
+
+function mostrarCarta(){
+document.getElementById("carta").style.display="block";
+}
+
+function heart(){
+const h=document.createElement("div");
+h.classList.add("heart");
+h.innerHTML="🤍";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(h);
+setTimeout(()=>{h.remove();},8000);
+}
+setInterval(heart,1000);
 </script>
 
 </body>
