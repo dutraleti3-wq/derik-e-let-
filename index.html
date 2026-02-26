@@ -7,71 +7,77 @@
 
 <style>
 body{
-    margin:0;
-    font-family: 'Georgia', serif;
-    background: linear-gradient(180deg,#fff6f9,#ffeef3);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    color:#5a3e4d;
+  margin:0;
+  background: linear-gradient(180deg,#fff6f9,#ffeef3);
+  font-family: Georgia, serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
 }
 
-/* TELA DE SENHA */
+/* LOGIN */
 #login{
-    text-align:center;
+  text-align:center;
 }
 
 input{
-    padding:10px;
-    border-radius:20px;
-    border:1px solid #d8a7b1;
-    text-align:center;
+  padding:10px;
+  border-radius:20px;
+  border:1px solid #d8a7b1;
+  text-align:center;
 }
 
 button{
-    margin-top:10px;
-    padding:8px 20px;
-    border:none;
-    border-radius:20px;
-    background:#d8a7b1;
-    color:white;
-    cursor:pointer;
+  margin-top:10px;
+  padding:8px 20px;
+  border:none;
+  border-radius:20px;
+  background:#d8a7b1;
+  color:white;
+  cursor:pointer;
 }
 
-/* LIVRETO */
-#livro{
-    display:none;
-    width:90%;
-    max-width:700px;
-    height:85vh;
-    background:white;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    padding:40px;
-    overflow:hidden;
-    position:relative;
+/* LIVRO */
+.book-container{
+  display:none;
+  perspective:2000px;
 }
 
-.pagina{
-    display:none;
-    height:100%;
-    overflow-y:auto;
+.book{
+  width:350px;
+  height:500px;
+  position:relative;
+  transform-style:preserve-3d;
+  transition: transform 1.5s;
 }
 
-.pagina.ativa{
-    display:block;
+.page{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:white;
+  border-radius:10px;
+  padding:30px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transform-origin:left;
+  transition: transform 1s;
+  backface-visibility:hidden;
+  overflow:auto;
 }
 
-h2{
-    text-align:center;
+.page h2{
+  text-align:center;
+}
+
+.page.flipped{
+  transform: rotateY(-180deg);
 }
 
 .nav{
-    position:absolute;
-    bottom:15px;
-    width:100%;
-    text-align:center;
+  text-align:center;
+  margin-top:20px;
 }
 </style>
 </head>
@@ -80,114 +86,82 @@ h2{
 
 <!-- LOGIN -->
 <div id="login">
-    <h2>🔒 Nosso Cantinho</h2>
-    <p>Digite a senha para entrar</p>
-    <input type="password" id="senha" placeholder="Senha">
-    <br>
-    <button onclick="entrar()">Entrar</button>
+  <h2>🔒 Nosso Cantinho</h2>
+  <p>Digite a senha</p>
+  <input type="password" id="senha" placeholder="Senha">
+  <br>
+  <button onclick="entrar()">Entrar</button>
 </div>
 
 <!-- LIVRO -->
-<div id="livro">
+<div class="book-container" id="bookContainer">
+  <div class="book" id="book">
 
-    <!-- Página 1 -->
-    <div class="pagina ativa">
-        <h2>🤍 Derik & Letícia 🤍</h2>
-        <p>Uma história escrita por Deus, vivida por nós.</p>
+    <div class="page" id="p1">
+      <h2>🤍 Derik & Letícia 🤍</h2>
+      <p>Uma história escrita por Deus, vivida por nós.</p>
     </div>
 
-    <!-- Página 2 -->
-    <div class="pagina">
-        <h2>Capítulo 1 — O Começo</h2>
-        <p><strong>10/11/2024</strong></p>
-        <p>Foi aqui que tudo começou...  
-        Uma conversa simples que mudou tudo.</p>
+    <div class="page" id="p2">
+      <h2>Capítulo 1</h2>
+      <p><strong>10/11/2024</strong></p>
+      <p>Foi aqui que tudo começou…  
+      Uma conversa simples que mudou tudo.</p>
     </div>
 
-    <!-- Página 3 -->
-    <div class="pagina">
-        <h2>Capítulo 2 — Os Pedidos</h2>
-        <p>🌹 O buquê</p>
-        <p>👨‍👩‍👧 Com meus pais</p>
-        <p>💍 As alianças</p>
+    <div class="page" id="p3">
+      <h2>Capítulo 2</h2>
+      <p>🌹 O buquê</p>
+      <p>👨‍👩‍👧 Com meus pais</p>
+      <p>💍 As alianças</p>
     </div>
 
-    <!-- Página 4 -->
-    <div class="pagina">
-        <h2>Capítulo 3 — Nós</h2>
-        <p>Você é meu lar 🤍</p>
-        <p>(Aqui você pode colocar fotos depois)</p>
+    <div class="page" id="p4">
+      <h2>💌 Minha Carta</h2>
+      <p>Meu amor,</p>
+      <p>Se eu pudesse escolher de novo, eu escolheria você…</p>
+      <p>Porque amar você não foi um acaso…  
+      foi a escolha mais bonita que o meu coração já fez.</p>
+      <p><strong>Letí 🤍</strong></p>
+      <p><em>PS: Mesmo quando eu fico quietinha, por dentro eu tô agradecendo por ter você.</em></p>
     </div>
 
-    <!-- Página 5 -->
-    <div class="pagina">
-        <h2>💌 Minha Carta Pra Você</h2>
+  </div>
 
-        <p>Meu amor,</p>
-
-        <p>Às vezes eu paro e penso em como tudo começou…  
-        E sorrio sozinha, porque no meio de tantas possibilidades, foi você.</p>
-
-        <p>Se eu pudesse escolher de novo, eu escolheria você.  
-        Na primeira conversa.  
-        No primeiro sorriso.  
-        No primeiro friozinho bom que eu senti sem nem entender direito o porquê.</p>
-
-        <p>Você chegou de mansinho, mas foi ficando…  
-        E quando eu percebi, já era meu lugar favorito.</p>
-
-        <p>Você é meu porto seguro.  
-        Meu abraço preferido.  
-        Meu lar.</p>
-
-        <p>Porque amar você não foi um acaso…  
-        foi a escolha mais bonita que o meu coração já fez.</p>
-
-        <p><strong>Com todo o meu amor,<br>Letí 🤍</strong></p>
-
-        <p><em>PS: Mesmo quando eu fico quietinha, por dentro eu tô agradecendo por ter você.</em></p>
-    </div>
-
-    <div class="nav">
-        <button onclick="anterior()">◀</button>
-        <button onclick="proxima()">▶</button>
-    </div>
-
+  <div class="nav">
+    <button onclick="anterior()">◀</button>
+    <button onclick="proxima()">▶</button>
+  </div>
 </div>
 
 <script>
-let paginaAtual = 0;
-const paginas = document.querySelectorAll(".pagina");
+let currentPage = 0;
+const pages = document.querySelectorAll(".page");
 
-function mostrarPagina(index){
-    paginas.forEach(p => p.classList.remove("ativa"));
-    paginas[index].classList.add("ativa");
+function entrar(){
+  const senha = document.getElementById("senha").value;
+  if(senha === "0508"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("bookContainer").style.display="block";
+    document.body.style.height="auto";
+    document.body.style.alignItems="flex-start";
+  }else{
+    alert("Senha incorreta 🤍");
+  }
 }
 
 function proxima(){
-    if(paginaAtual < paginas.length -1){
-        paginaAtual++;
-        mostrarPagina(paginaAtual);
-    }
+  if(currentPage < pages.length){
+    pages[currentPage].classList.add("flipped");
+    currentPage++;
+  }
 }
 
 function anterior(){
-    if(paginaAtual > 0){
-        paginaAtual--;
-        mostrarPagina(paginaAtual);
-    }
-}
-
-function entrar(){
-    const senha = document.getElementById("senha").value;
-    if(senha === "0508"){
-        document.getElementById("login").style.display="none";
-        document.getElementById("livro").style.display="block";
-        document.body.style.height="auto";
-        document.body.style.alignItems="flex-start";
-    }else{
-        alert("Senha incorreta 🤍");
-    }
+  if(currentPage > 0){
+    currentPage--;
+    pages[currentPage].classList.remove("flipped");
+  }
 }
 </script>
 
