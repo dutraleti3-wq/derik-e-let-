@@ -3,243 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Derik & Letícia 🤍</title>
+<title>Derik & Letícia</title>
 
 <style>
-body{
-    margin:0;
-    font-family:'Georgia', serif;
-    background:#111;
-    color:#eee;
-    overflow-x:hidden;
-    text-align:center;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(180deg, #fff6f9, #ffeef3);
+    color: #5a3e4d;
+    text-align: center;
 }
 
-/* LOGIN */
-.login{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 40px 20px;
 }
 
-input{
-    padding:10px;
-    border-radius:8px;
-    border:none;
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }
 
-button{
-    padding:10px 20px;
-    margin-top:10px;
-    border:none;
-    border-radius:8px;
-    background:#fff;
-    color:#111;
-    cursor:pointer;
+h2 {
+    margin-top: 50px;
+    font-weight: normal;
 }
 
-/* LIVRO */
-.book{
-    display:none;
-    padding:40px 20px;
-    animation:fade 1s;
+p {
+    line-height: 1.8em;
+    margin: 15px 0;
 }
 
-.page{
-    display:none;
+.capitulo {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 30px;
+    backdrop-filter: blur(5px);
 }
 
-.page.active{
-    display:block;
-}
-
-@keyframes fade{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-/* FOTO CAPA */
-.capa-img{
-    width:260px;
-    border-radius:15px;
-    margin:20px auto;
-    box-shadow:0 10px 30px rgba(0,0,0,0.5);
-}
-
-/* POLAROID */
-.polaroid{
-    background:#fff;
-    color:#000;
-    padding:15px 15px 40px 15px;
-    margin:30px auto;
-    width:260px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
-
-.polaroid img{
-    width:100%;
-    border-radius:8px;
-}
-
-/* CARTA */
-.carta{
-    display:none;
-    margin-top:20px;
-    background:#fff;
-    color:#000;
-    padding:20px;
-    border-radius:12px;
-}
-
-/* CONTROLES */
-.controls{
-    margin-top:30px;
-}
-
-/* PLAYER ESCONDIDO */
-.player{
-    position:fixed;
-    width:1px;
-    height:1px;
-    opacity:0;
-}
-
-/* CORAÇÕES */
-.heart{
-    position:fixed;
-    bottom:-20px;
-    animation:rise 8s linear infinite;
-    opacity:0.3;
-}
-
-@keyframes rise{
-    0%{transform:translateY(0);}
-    100%{transform:translateY(-100vh);}
-}
-
-@media(max-width:600px){
-    .polaroid,.capa-img{width:85%;}
+.ps {
+    margin-top: 30px;
+    font-size: 0.95em;
+    opacity: 0.8;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="login" id="login">
-    <h1>Derik & Letícia 🤍</h1>
-    <input type="password" id="senha" placeholder="Senha">
-    <button onclick="entrar()">Entrar</button>
-</div>
+<div class="container">
 
-<div class="book" id="book">
+<h1>🤍 Derik & Letícia 🤍</h1>
 
-<div class="page active">
-<h2>Capítulo 1 – O Começo ✨</h2>
+<section class="capitulo">
+<h2>💌 Capítulo 4 — Minha Carta Pra Você</h2>
 
-<img src="capa.jpg" class="capa-img">
+<p>Meu amor,</p>
 
-<p>Primeira conversa – 10/11/2024</p>
-<p>Ali eu não sabia… mas já era você.</p>
-</div>
+<p>Às vezes eu paro e penso em como tudo começou…<br>
+E sorrio sozinha, porque no meio de tantas possibilidades, foi você.</p>
 
-<div class="page">
-<h2>Capítulo 2 – Os Pedidos 🤍</h2>
-<p>Buquê – 28/04/2025</p>
-<p>Com meus pais – 15/05/2025</p>
-<p>Alianças – 12/06/2025</p>
-</div>
+<p>Se eu pudesse escolher de novo, eu escolheria você.<br>
+Na primeira conversa.<br>
+No primeiro sorriso.<br>
+No primeiro friozinho bom que eu senti sem nem entender direito o porquê.</p>
 
-<div class="page">
-<h2>Capítulo 3 – Nós 📸</h2>
+<p>Você chegou de mansinho, mas foi ficando…<br>
+E quando eu percebi, já era meu lugar favorito.</p>
 
-<div class="polaroid">
-<img src="foto1.jpg">
-<p>Nosso começo</p>
-</div>
+<p>Com você eu aprendi que amor é leve.<br>
+É cuidado nos detalhes.<br>
+É abraço demorado.<br>
+É sentir paz só de estar perto.</p>
 
-<div class="polaroid">
-<img src="foto2.jpg">
-<p>Você é meu lar</p>
-</div>
+<p>Eu amo o seu jeito.<br>
+O jeito que me olha como se eu fosse especial.<br>
+O jeito que segura minha mão como se estivesse dizendo “fica tranquila, eu tô aqui”.</p>
 
-</div>
+<p>Você é meu porto seguro.<br>
+Meu abraço preferido.<br>
+Meu lar.</p>
 
-<div class="page">
-<h2>Capítulo 4 – Carta 💌</h2>
-<button onclick="mostrarCarta()">Abrir carta</button>
+<p>E se um dia tudo ficar confuso lá fora, eu ainda vou saber onde quero estar: com você.</p>
 
-<div class="carta" id="carta">
-Desde que você entrou na minha vida,
-eu entendi o que é amar de verdade.
+<p>Obrigada por existir na minha vida.<br>
+Eu escolho você… hoje, amanhã e todos os dias que Deus permitir.</p>
 
-Você é minha escolha diária,
-meu melhor amigo,
-meu amor.
+<p>E se um dia a vida tentar nos testar, eu quero que você lembre:<br>
+eu não te amo só pelos momentos fáceis.<br>
+Eu te amo pela decisão de ficar.<br>
+De cuidar.<br>
+De lutar.</p>
 
-Com amor,
-Letícia 🤍
-</div>
-</div>
+<p>Porque amar você não foi um acaso…<br>
+foi a escolha mais bonita que o meu coração já fez.</p>
 
-<div class="controls">
-<button onclick="anterior()">⬅</button>
-<button onclick="proxima()">➡</button>
-</div>
+<p>E se eu tivesse apenas uma vida inteira para viver,<br>
+eu ainda acharia pouco… se não fosse ao seu lado.</p>
+
+<p><strong>Com todo o meu amor,<br>
+Letí 🤍</strong></p>
+
+<p class="ps"><em>PS: Mesmo quando eu fico quietinha, por dentro eu tô agradecendo por ter você.</em></p>
+
+</section>
 
 </div>
-
-<!-- PLAYER AUTOMÁTICO -->
-<div class="player" id="player">
-<iframe width="100%" height="100%" 
-src="https://www.youtube.com/embed/FG_GBOMGjtw?autoplay=1&loop=1&playlist=FG_GBOMGjtw" 
-frameborder="0" allow="autoplay"></iframe>
-</div>
-
-<script>
-let pagina=0;
-const paginas=document.querySelectorAll(".page");
-
-function entrar(){
-if(document.getElementById("senha").value==="0508"){
-document.getElementById("login").style.display="none";
-document.getElementById("book").style.display="block";
-document.getElementById("player").style.display="block";
-}else{
-alert("Senha incorreta 🤍");
-}
-}
-
-function mostrarPagina(){
-paginas.forEach(p=>p.classList.remove("active"));
-paginas[pagina].classList.add("active");
-}
-
-function proxima(){
-if(pagina<paginas.length-1){pagina++;mostrarPagina();}
-}
-
-function anterior(){
-if(pagina>0){pagina--;mostrarPagina();}
-}
-
-function mostrarCarta(){
-document.getElementById("carta").style.display="block";
-}
-
-function heart(){
-const h=document.createElement("div");
-h.classList.add("heart");
-h.innerHTML="🤍";
-h.style.left=Math.random()*100+"vw";
-h.style.fontSize=(Math.random()*20+15)+"px";
-document.body.appendChild(h);
-setTimeout(()=>{h.remove();},8000);
-}
-setInterval(heart,1000);
-</script>
 
 </body>
 </html>
